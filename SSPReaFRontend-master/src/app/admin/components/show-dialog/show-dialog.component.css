@@ -1,0 +1,22 @@
+@media screen and (max-width: 1280px) {
+    .contentAdmin{
+     margin-left: 78px;
+    }}
+ 
+    @media screen and (min-width: 1300px) {
+     .contentAdmin{
+      margin-left: 240px;
+     
+      
+     }}
+ 
+     table {
+       width: 100% important!;
+     }
+
+     .dialog{
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 300px;
+     }

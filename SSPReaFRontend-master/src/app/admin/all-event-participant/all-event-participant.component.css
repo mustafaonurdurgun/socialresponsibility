@@ -1,0 +1,54 @@
+.contentAdmin {
+ 
+  height: 100vh; /* Sayfa yüksekliği 100% olarak ayarlar */
+  overflow: hidden; /* Dikey kaydırmayı gizler */
+
+  /* Dikey kaydırma çubuğunu ve yatay kaydırmayı etkinleştirir */
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.scrollbar {
+  width: 100%; /* Genişlik ayarlayın */
+  white-space: nowrap; /* İçeriği yan yana sıralar */
+  display: flex;
+  justify-content: space-between; /* İçeriği sağa ve sola yerleştirir */
+
+  /* İhtiyaca bağlı olarak arkaplan rengi, kenar boşluğu ve diğer stil ayarlarınızı ekleyebilirsiniz */
+}
+
+/* Sağa ve sola kaydırma butonları için stil */
+.scroll-button {
+  padding: 10px;
+  cursor: pointer;
+  color: #333; /* Buton rengi */
+  background-color: #fff; /* Buton arkaplan rengi */
+  border: 1px solid #ccc; /* Kenarlık */
+  border-radius: 50%; /* Yuvarlak buton */
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+/* Sağa ve sola kaydırma butonları için stil */
+.scroll-button:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+/* Sağa ve sola kaydırma butonları için stil */
+.scroll-button.left {
+  transform: rotate(180deg); /* Sol butonu ters çevirir */
+}
+@media screen and (max-width: 1280px) {
+    .contentAdmin{
+     margin-left: 78px;
+    }}
+ 
+    @media screen and (min-width: 1300px) {
+     .contentAdmin{
+      margin-left: 240px;
+     
+      
+     }}
+ 
+   

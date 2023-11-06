@@ -1,0 +1,63 @@
+
+    <a class="postcard__img_link" style="cursor: pointer;" (click)="eventDetail(item.id)" *ngFor="let item of getDisplayedEvents(); let i = index">
+        <article class="postcard {{cardColor}}" style="height: 300px; width: 100%; margin-bottom: 20px;">
+         
+            <img
+              class="postcard__img"
+              src="{{item.imagePath}}"
+              alt="Image Title"
+            />
+         
+          <div class="postcard__text t-dark">
+            <h1 *ngIf="item.title!.length>=37&&item.title!.length<43" style="font-size: 30px;" class="postcard__title blue" ><a href="#">{{item.title}}</a></h1>
+            <h1 *ngIf="item.title!.length<37" class="postcard__title blue"><a href="#">{{item.title}}</a></h1>
+            <h1 *ngIf="item.title!.length>=43" class="postcard__title blue"><a href="#">{{item.title!.substring(0,40)}}...</a></h1>
+            <div class="row">
+              <div class="col-6">
+                <div class="postcard__subtitle small">
+                    <i class="fas fa-calendar-alt mr-2"></i>{{item.startDate!.toString().substring(0,10)}}{{"  "}}{{item.startDate!.toString().substring(11,16)}}
+                  
+                </div>
+                <div class="postcard__bar"></div>
+              </div>
+              <div class="col-6">
+                <div class="postcard__subtitle small">
+                  
+                    <i class="fas fa-calendar-alt mr-2"></i>{{item.finishDate!.toString().substring(0,10)}}{{"  "}}{{item.startDate!.toString().substring(11,16)}}
+                  
+             
+                </div>
+                <div class="postcard__bar"></div>
+              </div>
+            </div>
+            
+            <div *ngIf="item.description!.length>200" class="postcard__preview-txt">
+             {{item.description!.substring(0,200)}}...
+            </div>
+            <div *ngIf="item.description!.length<200" class="postcard__preview-txt">
+              {{item.description!}}
+             </div>
+         
+             
+                <ul class="postcard__tagbox">
+              <li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+              <li class="tag__item">
+                <i class="fas fa-clock mr-2"></i>55 mins.
+              </li>
+              <li class="tag__item play blue">
+                <a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+              </li>
+              
+            </ul>
+            
+             
+        
+          </div>
+          
+        </article>
+      </a>
+      <button style="margin-right: 10px;" (click)="prevPage()">Önceki Sayfa</button><span style="margin-right: 10px; color: black;">{{currentPage}}/{{pageCount}}</span>
+<button style="margin-right: 10px;" (click)="nextPage()">Sonraki Sayfa</button><span [style.color]="currentPage==item ? 'green' : 'black'" style="margin-left: 10px;cursor: pointer;" (click)="goThatPage(item)" *ngFor="let item of generateNumbers(pageCount)">{{item}}</span>
+
+       
+ 

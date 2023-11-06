@@ -1,0 +1,89 @@
+<section
+  style="background-color: #eee"
+  class="contentAdmin"
+  id="scrolling-container"
+>
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div
+        class="card-body"
+        id="scroll-content"
+        data-mdb-perfect-scrollbar="true"
+        style="height: 400px"
+      >
+        <div *ngFor="let message of messages">
+          <div
+            *ngIf="message.senderId != currentUser!.id.toString()"
+            class="d-flex flex-row"
+          >
+            <img
+              src="{{ user!.imagePath }}"
+              alt="avatar 1"
+              style="
+                width: 45px;
+                height: 100%;
+                border-radius: 50%;
+                margin-right: 10px;
+              "
+            />
+            <div>
+              <p
+                class="small p-2 ms-3 mb-1 rounded-3"
+                style="background-color: #f5f6f7"
+              >
+                {{ message.message }}
+              </p>
+              <p class="small ms-3 mb-3 rounded-3 text-muted">23:58</p>
+            </div>
+          </div>
+
+          <div
+            *ngIf="message.senderId == currentUser!.id.toString()"
+            class="d-flex flex-row justify-content-end mb-4 pt-1"
+          >
+            <div>
+              <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+                {{ message.message }}
+              </p>
+              <p
+                class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end"
+              >
+                00:06
+              </p>
+            </div>
+            <img
+              src="{{ currentUser!.imagePath }}"
+              alt="avatar 1"
+              style="
+                width: 45px;
+                height: 100%;
+                border-radius: 50%;
+                margin-left: 10px;
+              "
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div
+  class="col-12 card-footer text-muted d-flex justify-content-start align-items-center p-3"
+>
+  <img
+    src="{{ currentUser!.imagePath }}"
+    alt="avatar 3"
+    style="width: 40px; height: 100%"
+  />
+  <input
+    [(ngModel)]="sendingMessage"
+    type="text"
+    class="form-control form-control-lg"
+    id="exampleFormControlInput1"
+    placeholder="Type message"
+  />
+
+  <a (click)="sendMessage()" class="ms-3" href="#!"
+    ><i class="fas fa-paper-plane"></i
+  ></a>
+</div>

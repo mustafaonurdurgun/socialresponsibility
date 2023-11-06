@@ -1,0 +1,121 @@
+<div class="sidebar">
+  <div class="logo_content">
+    <div class="logo">
+      <i class="fa-solid fa-face-smile"></i>
+      <div class="logo_name">PANEL</div>
+    </div>
+    <i class="fa-solid fa-bars" id="btn" (click)="sidebarActive()"></i>
+  </div>
+
+  <ul class="nav_list">
+    
+     <!--KULLANICI PROFİL MENUSU  -->
+    <li>
+      <a href="/profile">
+        <i class="fa-solid fa-user"></i>
+        <span class="links_name">Profilim</span>
+      </a>
+      <span class="tooltip">Profilim</span>
+    </li>
+    <!--KULLANICININ MENULERİ  -->
+    <li *ngIf="currentUser?.userType!=0">
+      <a href="/member-attendentevents">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span class="links_name">Etkinliklerim</span>
+      </a>
+      <span class="tooltip">Etkinliklerim</span>
+    </li>
+    <li *ngIf="currentUser?.userType!=0">
+      <a href="/member-mycomments">
+        <i class="fa-regular fa-comment"></i>
+        <span class="links_name">Yorumlarım</span>
+      </a>
+      <span class="tooltip">Yorumlarım</span>
+    </li>
+    <li *ngIf="currentUser?.userType!=0">
+      <a href="/member-mylikes">
+        <i class="fa-regular fa-heart"></i>
+        <span class="links_name">Beğenilerim</span>
+      </a>
+      <span class="tooltip">Beğenilerim</span>
+    </li>
+    <li *ngIf="currentUser?.userType==0">
+      <a href="/admin-allusers">
+        <i class="fa-solid fa-users"></i>
+        <span class="links_name">Kullanıcılar</span>
+      </a>
+      <span class="tooltip">Kullanıcılar</span>
+    </li>
+    <!--ADMİNİN MENULERİ  -->
+    <li *ngIf="currentUser?.userType==0">
+      <a href="/admin-allcategories">
+        <i class="fa-solid fa-list-check"></i>
+        <span class="links_name">Kategoriler</span>
+      </a>
+      <span class="tooltip">Kategoriler</span>
+    </li>
+    <li *ngIf="currentUser?.userType==0">
+      <a href="/admin-allevents">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span class="links_name">Etkinlikler</span>
+      </a>
+      <span class="tooltip">Etkinlikler</span>
+    </li>
+    <li *ngIf="currentUser?.userType==0">
+      <a href="/admin-allcomments">
+        <i class="fa-regular fa-comment"></i>
+        <span class="links_name">Yorumlar</span>
+      </a>
+      <span class="tooltip">Yorumlar</span>
+    </li>
+    <li *ngIf="currentUser?.userType==0">
+      <a href="admin-allcommentlikes">
+        <i class="fa-regular fa-heart"></i>
+        <span class="links_name">Beğeniler</span>
+      </a>
+      <span class="tooltip">Beğeniler</span>
+    </li>
+    <li *ngIf="currentUser?.userType==0">
+      <a href="/admin-alleventparticipant">
+        <i class="fa-solid fa-person"></i>
+        <span class="links_name">Katılımcılar</span>
+      </a>
+      <span class="tooltip">Katılımcılar</span>
+    </li>
+    <!--ORTAK MENULER  -->
+    <li>
+      <a href="/home">
+        <i class="fa-solid fa-backward"></i>
+        <span class="links_name">Web Sitesine Git</span>
+      </a>
+      <span class="tooltip">Web Sitesine Git</span>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="bx bx-cog"></i>
+        <span class="links_name">Ayarlar</span>
+      </a>
+      <span class="tooltip">Ayarlar</span>
+    </li>
+  </ul>
+  <div class="profile_content">
+    <div class="profile">
+      <div class="profile_details">
+        <img src="{{currentUser?.imagePath}}" alt="" />
+
+        <div class="name_job">
+          <div style="font-size: 11px;" class="name">{{currentUser?.email}}</div>
+          <div *ngIf="currentUser?.userType==0" class="job">Admin</div>
+          <div *ngIf="currentUser?.userType==1" class="job">Organizatör</div>
+          <div *ngIf="currentUser?.userType==2" class="job">Kullanıcı</div>
+        </div>
+      </div>
+
+      <a href="/home" (click)="logout()">
+        <i class="bx bx-log-out" id="log_out"></i>
+      </a>
+    </div>
+      
+  </div>
+</div>

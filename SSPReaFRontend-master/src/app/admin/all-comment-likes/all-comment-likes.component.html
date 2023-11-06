@@ -1,0 +1,42 @@
+<app-admin style="position: absolute; z-index: 10;"></app-admin>
+<div class="container contentAdmin" style="position: absolute;z-index: 1;">
+  <h2>Beğeniler</h2>
+  <div class="scrollbar">
+    <table *ngIf="commentLikes!.length>0" class="table table-striped table-centered mb-0">
+      <thead>
+        <tr>
+          <th>Id</th>
+            <th>Liked User Id</th>
+            <th>Liked User Name</th>
+            <th>Liked User Email</th>
+            <th>Comment Id</th>
+            <th>Comment Description</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of commentLikes">
+          <td>{{item.id}}</td>
+          <td>{{item.userId}}</td>
+            <td>{{item.user?.fullName}}</td>
+            <td>{{item.user?.email}}</td>
+            <td>{{item.commentId}}</td>
+          <td>{{item.comment?.description}}</td>
+          
+          
+  
+          <td class="table-action" style="display: flex;">
+            <a href="javascript: void(0);" class="btn btn-sm bg-danger text-white" (click)="confirmDelete(item.id)">Delete</a>
+           
+          </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="commentLikes!.length==0">
+    Beğeni bulunamadı!
+  </div>
+  
+  </div>

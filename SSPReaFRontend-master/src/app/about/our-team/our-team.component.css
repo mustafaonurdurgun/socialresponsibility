@@ -1,0 +1,15 @@
+.site-section1{
+   
+    background-image: url('https://www.asmiships.com/images/about/abbanner_1628598028.jpg');
+    background-size: cover; /* Resmin tam öğeyi kaplamasını sağlar */
+    background-repeat: no-repeat; /* Resmin tekrar etmemesini sağlar */
+   
+
+}
+
+.site-section{
+    background-color: rgba(0, 0,0, 0.4);
+    
+    
+    
+}

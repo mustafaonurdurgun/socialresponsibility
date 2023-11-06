@@ -1,0 +1,38 @@
+
+<router-outlet style="position: absolute;" ></router-outlet>
+<button *ngIf="currentUser!=null" (dblclick)="handleDoubleClick($event)" style="width: 90px; height: 90px;background-color: #2c414d;" class="mesButton" id="messageButton" mat-fab >
+    <i style="font-size: 30px;color: white;" class="fa-solid fa-comments"></i>
+   
+  </button>
+  <div class="modal-container"  style="position: absolute; margin-top: 30px;" *ngIf="showModal" >
+    <div class="modal-content">
+      <h2>Messages</h2>
+      <div class="row">
+        <div class="col-4  contentAdmin ">
+            
+            <div class="card" *ngFor="let item of users" (click)="selectUser(item)">
+                <div class="row no-gutters">
+                    <div class="col-sm-3">
+                        <img class="card-img" style="width: 80px;height: 80px;" src="{{item.imagePath}}" alt="Suresh Dasari Card">
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="card-body">
+                            <h5 class="card-subtitle">{{item.fullName}}</h5>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+       <div class="col-8">
+        <app-chat [user]="selectedUser" *ngIf="selectedUser!=null" style="max-height: 1200px;"></app-chat>
+       </div>
+            
+        
+    </div>
+      <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+      <button (click)="closeModal()">Kapat</button>
+    </div>
+  </div>

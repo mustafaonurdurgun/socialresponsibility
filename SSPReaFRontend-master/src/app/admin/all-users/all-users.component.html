@@ -1,0 +1,134 @@
+<app-admin style="z-index: 10; position: absolute;"></app-admin>
+
+<div class="contentAdmin container" style="position: absolute; z-index: 1;">
+  <div>
+    <select class="form-control" id="searchFilter" [value]="searchFilter" (click)="searchFilterSelectedItem()">
+      <option value="0">Choose Filter</option>
+      <option value="1">Id</option>
+      <option value="2">Name</option>
+      <option value="3">Email</option>
+    </select>
+  </div>
+
+  <div [ngSwitch]="searchFilter" class="m-1">
+    <label *ngSwitchCase="1" class="form-label ">Id Search</label>
+    <input *ngSwitchCase="1" class="form-control" [(ngModel)]="searchItem" (ngModelChange)="RefleshUsers()" />
+
+    <label *ngSwitchCase="2" class="form-label ">Name Search</label>
+    <input *ngSwitchCase="2" class="form-control" [(ngModel)]="searchItem" (ngModelChange)="RefleshUsers()" />
+
+    <label *ngSwitchCase="3" class="form-label ">Email Search</label>
+    <input *ngSwitchCase="3" class="form-control" [(ngModel)]="searchItem" (ngModelChange)="RefleshUsers()" />
+  </div>
+  <div class="scrollbar">
+  <table *ngIf="users!.length>0" class="table table-striped table-centered mb-0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>
+          <div>
+            <select class="form-control" id="roleFilter" [value]="roleFilter" (click)="roleFilterSelectedItem()">
+              <option value="3">Roles</option>
+              <option value="0">Admin</option>
+              <option value="1" selected="selected">Organizator</option>
+              <option value="2">Kullanıcı</option>
+            </select>
+          </div>
+        </th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users">
+        <td>{{item.id}}</td>
+        <td><img style="width: 50px;height: 50px;" src="{{item.imagePath}}" alt=""></td>
+        <td>
+          {{item.fullName }}
+        </td>
+        <td ngSwitch="{{item.userType}}">
+          <div *ngSwitchCase="0">Admin</div>
+          <div *ngSwitchCase="1">Organizator</div>
+          <div *ngSwitchCase="2">User</div>
+
+        </td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone }}</td>
+
+        <td class="table-action" style="display: flex;">
+          <button class="btn btn-danger btn-sm" mat-button (click)="openDialog(item.id!)">Delete</button>
+          <a href="javascript: void(0);" (click)="openModal(item)"
+            class="btn btn-sm bg-warning text-white ml-2">Edit</a>
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div *ngIf="users!.length==0">
+    Kullanıcı bulunamadı
+  </div>
+
+</div>
+<div class="modal-container" *ngIf="showModal">
+  <div class="modal-content">
+    <h2>Kullanıcı Bilgileri Formu</h2>
+    <div>
+      <form>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="Email">Email:</label>
+              <input readonly [(ngModel)]="selectedEditUser!.email" [ngModelOptions]="{standalone: true}" type="email"
+                class="form-control" id="Email" name="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="UserName">Kullanıcı Adı:</label>
+              <input readonly [(ngModel)]="selectedEditUser!.userName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="UserName" name="UserName" required>
+            </div>
+            <div class="form-group">
+              <label for="FullName">Ad Soyad:</label>
+              <input  [(ngModel)]="selectedEditUser!.fullName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="FullName" name="FullName" required>
+            </div>
+            <div class="form-group">
+              <label for="Phone">Telefon:</label>
+              <input readonly [(ngModel)]="selectedEditUser!.phone" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" id="FullName" name="FullName" required>
+            </div>
+
+
+
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="">Choose Role</label>
+              <select class="form-control" id="chooseRole" [value]="chooseRole" (click)="chooseRoleForUsers()">
+                <option value="0">Admin</option>
+                <option value="1">Organizator</option>
+                <option value="2">Kullanıcı</option>
+
+              </select>
+            </div>
+            <button (click)="updateUser()" class="btn btn-primary">Güncelle</button>
+          </div>
+
+        </div>
+
+
+
+
+
+      </form>
+    </div>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>
+      
+  </div>
+</div>

@@ -1,0 +1,16 @@
+
+
+<div class="dialog" style="position: fixed; z-index: 1000; background-color: white;">
+    
+    <h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <p>{{message}}</p>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn bg-secondary text-white">Cancel</button>
+  <button class="btn bg-danger text-white" mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="deleteEntity()">Delete</button>
+</mat-dialog-actions>
+
+
+</div>

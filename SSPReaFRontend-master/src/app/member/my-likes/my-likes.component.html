@@ -1,0 +1,34 @@
+<app-admin style="z-index: 10; position: absolute"></app-admin>
+
+<div
+  class="contentAdmin container"
+  style="position: absolute; margin-right: 0; z-index: 1"
+>
+  <table class="table table-striped table-centered mb-0">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Beğenilen Yorum</th>
+        <th>Yorumun Etkinliği</th>
+        <th>Vazgeç</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of myCommentLikes">
+        <td>{{ item.id }}</td>
+        <td>{{ item.comment?.description }}</td>
+
+        <td>{{ findEventName(item.comment?.eventId) }}</td>
+
+        <td>
+          <a
+            style="cursor: pointer"
+            (click)="cancelLike(item.id)"
+            class="btn btn-sm bg-danger text-white ml-2"
+            >Beğenmekten Vazgeç</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

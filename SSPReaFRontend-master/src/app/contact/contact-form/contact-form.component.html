@@ -1,0 +1,57 @@
+<div class="site-section">
+  <div class="container">
+    <div class="row formFix" >
+      <div class="col-lg-8 mb-1">
+        <form action="#" method="post">
+          <div class="form-group row">
+            <div class="col-md-6 mb-4 mb-lg-0">
+              <input type="text" class="form-control" placeholder="Ad" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" />
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Soyad" [(ngModel)]="surname" [ngModelOptions]="{standalone: true}" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input type="text" class="form-control" placeholder="Email address" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <textarea type="text" class="form-control" placeholder="Write your message." cols="30" rows="10"
+                [(ngModel)]="message!" [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6 mr-auto">
+              <input class="btn btn-block btn-primary text-white py-3 px-5 rounded-0" value="Send Message"
+                (click)="sendEmail()" style="cursor: pointer;" />
+                <div>{{errorMessage}}</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-4 ml-auto">
+        <div class="bg-white p-3 p-md-5">
+          <h3 class="text-cursive mb-4">Contact Info</h3>
+          <ul class="list-unstyled footer-link">
+            <li class="d-block mb-3">
+              <span class="d-block text-muted small text-uppercase font-weight-bold">Address:</span>
+              <span>34 Street Name, City Name Here, United States</span>
+            </li>
+            <li class="d-block mb-3">
+              <span class="d-block text-muted small text-uppercase font-weight-bold">Phone:</span><span>+1 242 4942
+                290</span>
+            </li>
+            <li class="d-block mb-3">
+              <span
+                class="d-block text-muted small text-uppercase font-weight-bold">Email:</span><span>info@yourdomain.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

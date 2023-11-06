@@ -1,0 +1,78 @@
+<app-admin style="z-index: 10; position: absolute;"></app-admin>
+
+<div class="contentAdmin container" style="position: absolute;z-index: 1;">
+  <h2>Kategoriler</h2>
+
+  <button (click)="openAddModal()" class="btn btn-sm bg-success text-white ml-2 addButton">Kategori Ekle</button>
+
+  <div class="scrollbar">
+  <table class="table table-striped table-centered mb-0 mt-2">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Ad</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of categories">
+        <td>{{ item.id }}</td>
+        <td>{{ item.categoryName }}</td>
+        <td>
+
+          <button class="btn btn-danger btn-sm" (click)="confirmDelete(item.id)">Sil</button>
+
+
+          <button class="btn btn-warning" (click)="openModal(item)"
+            class="btn btn-sm bg-warning text-white ml-2">Güncelle</button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>
+
+<!-- Kategori Ekleme ve Güncelleme Modal yapıları -->
+<div class="modal-container" *ngIf="showModal">
+  <div class="modal-content">
+    <h2 *ngIf="selectedCategory==undefined">Kategori Ekleme</h2>
+    <h2 *ngIf="selectedCategory!=undefined">Kategori Güncelleme</h2>
+    <div>
+      <form>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div *ngIf="selectedCategory!=undefined" class="form-group">
+              <label for="Email">Id:</label>
+              <input readonly [(ngModel)]="selectedCategory!.id" [ngModelOptions]="{standalone: true}" type="email"
+                class="form-control" required>
+            </div>
+            <div class="form-group" *ngIf="selectedCategory==undefined">
+              <label for="UserName">Kategori Adı:</label>
+              <input [(ngModel)]=" categoryRequest!.categoryName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" required>
+
+            </div>
+            <div *ngIf="selectedCategory!=undefined" class="form-group">
+              <label for="UserName">Kategori Adı:</label>
+              <input [(ngModel)]="selectedCategory!.categoryName" [ngModelOptions]="{standalone: true}" type="text"
+                class="form-control" required>
+            </div>
+            <br>
+
+          </div>
+        </div>
+
+        <button (click)="selectedCategory==undefined?addCategory(): updateCategory()"
+          class="btn btn-primary">Tamamla</button>
+
+      </form>
+    </div>
+    <br>
+    <!-- Kullanıcı bilgileri formu burada yer alabilir -->
+    <button (click)="closeModal()">Kapat</button>
+      
+  </div>
+</div>

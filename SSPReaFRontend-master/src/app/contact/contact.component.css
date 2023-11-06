@@ -1,0 +1,16 @@
+.cagri {
+  background-image: url("https://images.unsplash.com/photo-1531844251246-9a1bfaae09fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvbW11bml0eXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60");
+
+  opacity: 0.5 !important;
+  /* Kullanılacak Görsel */
+  background-color: tomato; /* Görsel Çalışmassa Arkaplan Rengi */
+  background-position: center; /* Görseli Ortala */
+  background-repeat: no-repeat; /* Resmi tekrarlama */
+  background-size: cover; /* resmi ekranı kaplayacak hale getir. */
+}
+
+@media screen and (max-width: 1200px) {
+ .margin{
+  margin-bottom: 40px;
+ };
+}
